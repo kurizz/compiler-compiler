@@ -5,7 +5,7 @@
 %}
 
 %%
- /* [plans] add two tokens: paren-token, exit(quit)-token */
+ /* [plans] add token: paren-token */
 "+"		{return ADD;}
 "-"		{return SUB;}
 "*"		{return MUL;}
