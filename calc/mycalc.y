@@ -19,8 +19,9 @@ line_list:		line
 		|		line_list line
 				;
 
-line:	   		expression CR	{printf(">>>%lf\n", $1);}
+line:	   		expression CR	{printf("%lf\n>>> ", $1);}
 		|		QUIT CR			{printf("Sayounara !\n"); exit(0);}
+		|		CR				{printf(">>> ");}
 				;
 
 expression:		term
@@ -36,21 +37,22 @@ term:			primary_expression
 primary_expression:
 				DOUBLE_LITERAL
 		;
-
 %%
 
 int yyerror(char const *str) {
 	extern char *yytext;
-	fprintf(stderr, "parser error near %s\n", yytext);
+	fprintf(stderr, "parser error near \"%s\"\n", yytext);
 	return 0;
 }
 
 int main(void) {
+	printf("Welcome to mycalc !\n");
+	printf(">>> ");
 	extern int yyparse(void);
 	extern FILE *yyin;
 	yyin = stdin;
 	if (yyparse()) {
-		fprintf(stderr, "Error ! Error ! Error !\n");
+		fprintf(stderr, "Error !\n");
 		exit(1);
 	}
 }
