@@ -14,7 +14,6 @@
 %type   <double_value>  expression term primary_expression
 
 %%
-
 line_list:      line
         |       line_list line
                 ;
@@ -32,11 +31,11 @@ expression:     term
 term:           primary_expression
         |       term MUL primary_expression {$$ = $1 * $3}
         |       term DIV primary_expression {$$ = $1 / $3}
-        ;
+                ;
 
 primary_expression:
                 DOUBLE_LITERAL
-        ;
+                ;
 %%
 
 int yyerror(char const *str) {

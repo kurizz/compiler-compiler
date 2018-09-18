@@ -1,10 +1,9 @@
 %{
 #include "mycalc.tab.h"
-/* int yywrap(void) return 1; */
 %}
 
 %%
- /* [plans] add token: paren-token */
+ /* [plans] add token: paren */
 "+"             {return ADD;}
 "-"             {return SUB;}
 "*"             {return MUL;}
