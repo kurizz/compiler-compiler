@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define YYDEBUG 1
+extern int yylex(void);
+extern int yyerror(char const *str);
 %}
 
 %union {
